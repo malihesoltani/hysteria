@@ -1,10 +1,10 @@
-FROM golang:1.21-alpine
+FROM golang:1.21.6
 
 WORKDIR /app
 
 COPY . .
 
-RUN go build -o hysteria ./cmd/server
+RUN go mod tidy && go build -o hysteria ./cmd/server
 
 EXPOSE 443
 
