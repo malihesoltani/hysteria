@@ -1,11 +1,16 @@
-FROM golang:1.21.6
+FRFROM golang:1.22 as builder
 
 WORKDIR /app
 
+COPY go.mod go.sum ./
+RUN go mod download
+
 COPY . .
 
-RUN go mod tidy && go build -o hysteria ./cmd/server
+RUN go build -o hysteria ./cmd/server
 
-EXPOSE 443
+FROM debian:bookworm-slim
 
-CMD ["./hysteria", "-c", "config.yaml"]
+COPY --from=builder /app/hysteria /usr/local/bin/hysteria
+
+ENTRYPOINT ["hysteria"]
