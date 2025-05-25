@@ -1,0 +1,6 @@
+listen: :443
+auth:
+  type: password
+  password: T%Qwt&7UbK!W84Vnk*i
+tls:
+  disable: true
