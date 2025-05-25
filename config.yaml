@@ -1,6 +1,10 @@
 listen: :443
+tls:
+  cert: hysteria.crt
+  key: hysteria.key
 auth:
   type: password
+  password: UbK!W84
+obfs:
+  type: salamander
   password: T%Qwt&7UbK!W84Vnk*i
-tls:
-  disable: true
